@@ -19,8 +19,6 @@
 				"codigo": "P01",
 				"descripcion": "Lightly seasoned USDA Select top sirloin* cooked to perfection and served hot off the grill. Served with your choice of two sides.",
 				"disponiblePickup": true,
-				"idCategoria": 404,
-				"idComercio": 203,
 				"idProducto": 2659,
 				"imagenUrl": "https://static.olocdn.net/menu/applebees/fc854efeb336ed0e12907b6d6ef975e5.jpg",
 				"nombre": "8 OZ. TOP SIRLOIN*",
@@ -36,8 +34,6 @@
                 "codigo": "P02",
                 "descripcion": "Lightly seasoned USDA Select top sirloin* cooked to perfection and served hot off the grill. Served with your choice of two sides.",
 				"disponiblePickup": true,
-				"idCategoria": 404,
-				"idComercio": 203,
                 "idProducto": 2660,
                 "imagenUrl": "https://static.olocdn.net/menu/applebees/7f3a2fa8f6658f68e44519300ab348df.jpg",
 				"nombre": "6 OZ. TOP SIRLOIN*",
@@ -53,8 +49,6 @@
                 "codigo": "P03",
                 "descripcion": "Full Rack. Slow-cooked to fall off the bone tenderness. Slathered with your choice of sauce: - Spicy Texas BBQ sauce - Honey BBQ sauce Served with 2 sides.",
 				"disponiblePickup": true,
-				"idCategoria": 404,
-				"idComercio": 203,
                 "idProducto": 2661,
                 "imagenUrl": "https://static.olocdn.net/menu/applebees/484a3a4985fe639f14f1889778f061da.jpg",
 				"nombre": "DOUBLE-GLAZED BABY BACK RIBS",
@@ -70,8 +64,6 @@
                 "codigo": "P04",
                 "descripcion": "Half Rack. Slow-cooked to fall off the bone tenderness. Slathered with your choice of sauce: - Spicy Texas BBQ sauce - Honey BBQ sauce Served with 2 sides.",
 				"disponiblePickup": true,
-				"idCategoria": 404,
-				"idComercio": 203,
                 "idProducto": 2662,
                 "imagenUrl": "https://static.olocdn.net/menu/applebees/14cef00c0a52ef34f380a3b5fe573a9a.jpg",
 				"nombre": "HALF RACK DOUBLE-GLAZED BABY BACK RIBS",
@@ -87,8 +79,6 @@
 				"codigo": "P07",
 				"descripcion": "A popular take on surf 'n turf, this dish starts with a tender grilled 8 oz. USDA Select top sirloin* and is topped with sautéed blackened shrimp and our creamy lemon butter Parmesan sauce. Served with your choice of two sides.",
 				"disponiblePickup": false,
-				"idCategoria": 404,
-				"idComercio": 203,
                 "idProducto": 3044,
                 "imagenUrl": "https://static.olocdn.net/menu/applebees/800bff901a6a168d705548e6ce7c4314.jpg",
 				"nombre": "SHRIMP 'N PARMESAN SIRLOIN*",
@@ -104,8 +94,6 @@
                 "codigo": "P08",
                 "descripcion": "Big flavor from New Orleans. UDSA Select top sirloin steak* jazzed up with Cajun spices and garlic butter served on a cast iron platter with sautéed mushrooms and onions. Served with crispy red potatoes.",
 				"disponiblePickup": true,
-				"idCategoria": 404,
-				"idComercio": 203,
                 "idProducto": 3045,
                 "imagenUrl": "https://static.olocdn.net/menu/applebees/14cef00c0a52ef34f380a3b5fe573a9a.jpg",
 				"nombre": "SIGNATURE BOURBON STREET STEAK*",
@@ -121,8 +109,6 @@
                 "codigo": "P08",
                 "descripcion": "Smaller portion of an Applebee's original! Our famous slow cooked riblets, slathered in your choice of sauce. Served with fries.",
 				"disponiblePickup": true,
-				"idCategoria": 404,
-				"idComercio": 203,
                 "idProducto": 3140,
                 "imagenUrl": "https://static.olocdn.net/menu/applebees/b75ab2f5d83388cdb19a9060cdfd43ae.jpg",
 				"nombre": "RIBLET BASKET",
@@ -158,24 +144,8 @@
 				},
 				"codigo": "D01",
 				"disponiblePickup": true,
-				"idCategoria": 405,
-				"idComercio": 203,
 				"idProducto": 2673,
 				"nombre": "Coca Regular",
-				"nombreCategoria": "Drinks",
-				"precio": 10,
-				"cantidad": 0
-			},
-			{
-				"categoria": {
-					"disponiblePickup": true
-				},
-				"codigo": "D02",
-				"disponiblePickup": true,
-				"idCategoria": 405,
-				"idComercio": 203,
-				"idProducto": 2674,
-				"nombre": "Coca Zero",
 				"nombreCategoria": "Drinks",
 				"precio": 10,
 				"cantidad": 0
@@ -215,20 +185,6 @@
 				"nombreCategoria": "Beers",
 				"precio": 15,
 				"cantidad": 0
-			},
-			{
-				"categoria": {
-					"disponiblePickup": true
-				},
-				"codigo": "B02",
-				"disponiblePickup": true,
-				"idCategoria": 406,
-				"idComercio": 203,
-				"idProducto": 2709,
-				"nombre": "Gallo 16oz.",
-				"nombreCategoria": "Beers",
-				"precio": 20,
-				"cantidad": 0
 			}
 		]
 	},
@@ -262,20 +218,6 @@
 				"idComercio": 203,
 				"idProducto": 2899,
 				"nombre": "vino blan cop",
-				"nombreCategoria": "Vinos",
-				"precio": 25,
-				"cantidad": 0
-			},
-			{
-				"categoria": {
-					"disponiblePickup": true
-				},
-				"codigo": "V04",
-				"disponiblePickup": true,
-				"idCategoria": 432,
-				"idComercio": 203,
-				"idProducto": 2900,
-				"nombre": "vino tin cop",
 				"nombreCategoria": "Vinos",
 				"precio": 25,
 				"cantidad": 0
