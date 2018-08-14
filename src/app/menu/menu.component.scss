@@ -1,0 +1,98 @@
+@import "../../styles-variables";
+@import "../../styles";
+
+.title{
+    color: $cool-grey;
+    font-family: $font-google;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.88;
+    letter-spacing: normal;
+    margin-top: 40px
+}
+.category-container{
+    padding: 40px 5px;
+}
+.category-container h3{
+    font-family: $font-google;
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $dark-grey;
+    text-transform: capitalize;
+}
+.product-container{
+    cursor: pointer;
+    margin: 5px 10px;
+    box-shadow: 0 7px 17px 0 rgba(185, 192, 197, 0.5);
+    background-color: $product-color;
+    border-radius: 8px !important;
+}
+.product-hero{
+    background-color: transparent;
+    border: 0px solid white;
+    padding: 0;
+}
+.product-image{ 
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: center;
+    z-index: 0;
+}
+.product-title{
+    font-size: 16px;
+    font-family: $font-google;
+    color: #26282b;
+    margin-bottom: 5px;
+}
+.product-description{
+    color: $cool-grey;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    font-family: $font-google;
+    margin-top:0;
+    margin-bottom: 25px;
+}
+.product-price{
+    font-size: 18px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.78;
+    letter-spacing: normal;
+    color: #000000;
+    font-family: $font-google;
+    margin: 0;
+}
+.product-price::before{
+    content: "";
+    display: block;
+    background: url("../../assets/mint-icon.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: -3px 4px 0 0;
+}
+.product-quantity{
+    background-color: $mint-color;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-family: $font-google;
+    text-align: center;
+    margin-top: -128px;
+    margin-right: -28px;
+    font-size: 14px;
+    float: right;
+}

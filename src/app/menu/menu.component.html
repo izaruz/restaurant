@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 col-lg-8">
+      <h3 class="title">Selecciona los productos que quieres agregar a tu orden</h3>
+      <ng-container *ngFor="let category of menu$">
+        <div class="row category-container" *ngIf="category.disponiblePickup">
+          <div class="col-sm-12" (click)="quantity()">
+            <h3>{{category.nombre}}</h3>
+          </div>
+          <ng-container *ngFor="let product of category.productos">
+            <div class="card col-lg-6 product-hero" *ngIf="product.disponiblePickup">
+              <div class="card-body product-container" (click)="getpopup(product)" >
+                <div class="row flex-nowrap align-items-center">
+                  <div class="col-xs-4 custom-padding">
+                    <div class="rounded-circle product-image">
+                        <div *ngIf="product.imagenUrl">
+                          <img [src]="product.imagenUrl" width="100px">
+                        </div>
+                        <div *ngIf="!product.imagenUrl">
+                          <img src="assets/default-product.jpg" height="100px">
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-8">
+                    <h5 class="product-title">{{ titleCaseWord(product.nombre) }}</h5>
+                    <p class="product-description">{{ product.descripcion | slice:0:100 }}</p>
+                    <p class="product-price">{{ product.precio | number:'1.2-2' }}</p>
+                  </div>
+                </div>
+                <div class="product-quantity" [hidden]="!product.cantidad">{{ product.cantidad }}</div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Cart component -->
+    <div class="col-sm-5 col-lg-4">
+      <app-cart></app-cart>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<app-productdetails [list] = "selectedProduct"></app-productdetails>

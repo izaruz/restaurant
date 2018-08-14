@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div class="modal fade modal-backdrop-purple" id="detailProduct" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" *ngIf="fulldetails">
+      <div class="detail-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div *ngIf="fulldetails.imagenUrl">
+          <img src="{{ fulldetails.imagenUrl }}" >
+        </div>
+        <div *ngIf="!fulldetails.imagenUrl">
+          <img src="assets/default-product.jpg">
+        </div>
+      </div>
+      <div class="modal-body detail-body">
+          <div class="row product-hero">
+            <div class="col-sm-12">
+              <h5 class="product-title">{{ fulldetails.nombre }}</h5>
+              <p class="product-description">{{ fulldetails.descripcion }}</p>
+            </div>
+            <div class="col-sm-12">
+              <div class="row justify-content-center">
+                <img src="assets/mint-icon.svg" alt="m1nt logo" class="order-mint">
+                <p class="product-price">{{ fulldetails.precio | number:'1.2-2' }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center actions-btns">
+            <div class="action-btn-minus" (click)="removeQuantity()"><img src="assets/minus-icon.svg" alt="Remove item"></div>
+            <div class="product-quantity">{{ quantity }}</div>
+            <!-- <div class="product-quantity">{{ fulldetails.cantidad }}</div> -->
+            <div class="action-btn-plus" (click)="addQuantity()"><img src="assets/plus-icon.svg" alt="Add item"></div>
+          </div>
+          <div class="row justify-content-center product-add-container">
+            <div class="product-add" (click)="updateQuantity( fulldetails )" data-dismiss="modal" aria-label="Close" *ngIf="fulldetails.cantidad == 0">
+              <p>Agregar a la orden</p>
+            </div>
+            <div class="product-add" (click)="updateQuantity( fulldetails )" data-dismiss="modal" aria-label="Close" *ngIf="fulldetails.cantidad > 0">
+              <p>Actualizar la orden</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

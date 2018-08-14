@@ -1,0 +1,121 @@
+@import "../../styles-variables";
+
+.modal-backdrop.fade.show {
+    background-color: #210539 !important;
+}
+.detail-header{
+    position: relative;
+    padding: 0;
+    height: 200px;
+    overflow: hidden;
+}
+.detail-header img {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%,-50%);
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+.detail-header button {
+    position: absolute;
+    z-index: 5;
+    top: 20px;
+    right: 20px;
+    color: #fefefe;
+}
+.product-hero{
+    margin-bottom: 30px;
+}
+.product-title{
+    font-size: 28px;
+    font-family: $font-google;
+    color: #26282b;
+    margin-bottom: 5px;
+}
+.product-description{
+    color: $cool-grey;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    font-family: $font-google;
+    margin-top:0;
+    margin-bottom: 25px;
+}
+.product-price{
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.78;
+    letter-spacing: normal;
+    color: #000000;
+    font-family: $font-google;
+    margin: 0;
+}
+.order-mint{
+    height: 20px;
+    padding-right: 10px !important;
+}
+// .product-price::before{
+//     content: "";
+//     display: block;
+//     background: url("../../assets/mint-icon.svg") no-repeat;
+//     width: 20px;
+//     height: 20px;
+//     float: left;
+//     margin: -3px 4px 0 0;
+// }
+.modal-dialog{
+    opacity: 1;
+}
+.action-btn-plus{
+    background-color: $mint-color;
+    border-radius: 50%;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+.action-btn-minus{
+    background-color: #dadee2;
+    border-radius: 50%;
+    padding: 11px 12px;
+    cursor: pointer;
+}
+.product-quantity{
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.78;
+    letter-spacing: normal;
+    color: #000000;
+    font-family: $font-google;
+    margin: 15px 15px 0 15px;
+}
+.product-add{
+    border-radius: 5px;
+    background-color: $primary-color;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 20px
+}
+.product-add p{
+    font-family: $font-google;
+    text-transform: uppercase;
+    color: $font-contrast;
+    margin: 10px auto;
+}
+.actions-btns{
+    margin-bottom: 20px
+}
+.product-add-container{
+    margin-bottom: 15px
+}
+.modal-backdrop{
+    background-color: $modal-backdrop-bg !important;
+}

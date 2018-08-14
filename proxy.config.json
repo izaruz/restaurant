@@ -1,0 +1,9 @@
+{
+	"/rest": {
+		"target": "http://1001noches.com/jakes/rest",
+		"secure": false,
+		"logLevel": "debug",
+		"changeOrigin": true,
+		"pathRewrite": {"^/rest" : ""}
+	}
+}

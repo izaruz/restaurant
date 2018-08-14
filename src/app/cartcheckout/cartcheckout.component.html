@@ -1,0 +1,47 @@
+<div class="row cart-stick">
+  <div class="col-md-12">
+    <div class="cart-container">
+      <h3>Resumen de orden</h3>
+      <div *ngIf="total > 0">
+        <div class="row item-container flex-nowrap align-items-center" *ngFor="let item of cart">
+          <div class="col-2 col-md-1 no-padding">
+            <div class="item-quantity">{{ item.cantidad }}</div>
+          </div>
+          <div class="col-5 col-md-6 no-padding"> 
+            <div class="item-description">{{ item.nombre }}</div>
+          </div>
+          <div class="col-3 col-md-3 no-padding">
+            <div class="item-cost">{{ item.precio | number:'1.2-2' }}</div>
+          </div>
+          <div class="col-2 col-md-2 no-padding d-flex" (click)="deleteOrderItem(item.idProducto)">
+            <div class="item-delete d-flex"><img src="assets/trash-icon.svg" alt="Delete"></div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-12 col-md-8 items-total">
+            SubTotal: <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 
+          </div>
+          <div class="col-sm-12 col-md-8 items-total">
+            Total: <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 
+          </div>
+        </div>
+        <div class="row justify-content-center product-add-container">
+          <button class="btn-checkout btn-checkout-lg btn-checkout-primary " (click)="checkoutOrder()" [disabled]="validCustomer">Confirmar órden</button>
+        </div>
+      </div>
+      
+      <div *ngIf="total == 0">
+        <div class="cart-empty">
+          <img src="assets/empty-bag-icon.svg" alt="Cart empty">
+        </div>
+        <div class="cart-empty-desc">
+          <p>Tu órden está vacia. Agrega productos para empezar.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<app-response></app-response>

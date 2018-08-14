@@ -1,0 +1,36 @@
+@import "../../styles-variables";
+
+.navbar-bg{
+    background-color: $primary-color !important;
+}
+.phone{
+    padding-right: 25px;
+}
+.phone h3{
+    color: $font-contrast;
+    font-family: $font-google;
+    font-size: 1.2em;
+    margin: 0;
+    padding-left: 10px
+}
+nav{
+    .navbar-brand{
+        color: $font-contrast !important;
+    }
+    .nav-link{
+        color: $font-contrast !important;    
+    }
+}
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255,102,203) !important;
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+@media (max-width: 576px) {
+    .phone{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}

@@ -1,0 +1,24 @@
+@import "../../styles-variables";
+
+.footer-bg{
+    background-color: $primary-color !important;
+    color: $font-contrast;
+}
+.copy-container{
+    font-family: $font-google;
+    color: $font-contrast;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.17;
+    letter-spacing: normal;
+    margin: 40px auto;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+    .footer-bg{
+        padding-bottom: 60px;
+    }
+}

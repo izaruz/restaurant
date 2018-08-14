@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8" *ngIf="order$">
+      <div class="row align-items-center order-header">
+        <img src="assets/order-icon-complete.svg" alt="Bag icon">
+        <h3 class="order-title">Orden # {{ orderParams$.id }}</h3>
+      </div>
+      <section class="order-container">
+        <div class="row">
+          <div class="col-12 col-md-12 text-center">
+            <img src="assets/cart-complete-icon.svg" class="order-completed-icon" alt="Order complete">
+          </div>
+          <div class="col-sm-12 col-md-12">
+            <h3 class="order-subtitle">Tu órden ha sido procesada</h3>
+          </div>
+          <div class="col-sm-12 col-md-12">
+            <h4 class="order-resume">Resumen de tu órden</h4>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-title">Comercio:</p>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-description">{{ order$.nombreComercio }}</p>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-title">Nombre:</p>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-description">{{cliente}}</p>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-title">Tarjeta M1nt:</p>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-description">{{tarjeta}}</p>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-title">Lugar entrega:</p>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-description">{{ order$.lugar_entrega }}</p>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-title">Hora de entrega:</p>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6">
+            <p class="order-detail-description">{{ orderPickupTime }}</p>
+          </div>
+
+          <div class="col-sm-12 spacer">
+            <p class="order-detail-important">Tienes 15 min a partir de esta hora para recoger tu órden.</p>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="row item-container" *ngFor="let detail of order$.detalle">
+              <div class="col-2 col-sm-2">
+                <div class="item-quantity">{{detail.cantidad}}</div>
+              </div>
+              <div class="col-6 col-sm-6">
+                <span class="item-description">{{detail.descripcion}}</span>
+              </div>
+              <div class="col-4 col-sm-4 text-right">
+                <img src="assets/mint-icon.svg" alt="m1nt logo" class="order-mint">
+                <span class="item-cost">{{detail.total | number:'1.2-2'}}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 divider">
+            <div class="row justify-content-between">
+              <div class="col-4 col-md-3">
+                <p class="order-subtotal">Subtotal</p>
+              </div>
+              <div class="col-4 col-md-4 text-right">
+                <img src="assets/mint-icon.svg" alt="m1nt logo" class="order-mint">
+                <span class="order-subtotal">{{ order$.subTotal | number:'1.2-2' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="row justify-content-between">
+              <div class="col-4 col-md-3">
+                <p class="order-total">Total</p>
+              </div>
+              <div class="col-4 col-md-4 text-right">
+                <img src="assets/mint-icon.svg" alt="m1nt logo" class="order-mint">
+                <span class="order-total">{{ order$.total | number:'1.2-2' }}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row justify-content-center product-add-container">
+          <button class="btn-checkout btn-checkout-lg btn-checkout-primary" (click)="newOrder()" >Realizar otra órden</button>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,33 @@
+header {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 315px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px 0 rgba(185, 192, 197, 0.5);
+}
+header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+header img{
+    z-index: 5;
+    width: 250px
+}
+
+@media (max-width: 576px) {
+    header{
+        height: 140px;
+    }
+    header img{
+        width: 150px
+    }
+}

@@ -1,0 +1,62 @@
+<div class="row cart-stick">
+  <div class="col-md-12 d-none d-md-block">
+    <div class="cart-container">
+      <h3 (click)="storageOrder()">Resumen de orden</h3>
+      <div *ngIf="total > 0">
+        <div class="row item-container flex-nowrap align-items-center" *ngFor="let item of cart; let index = index; trackBy:trackByIndex;"  (click)="updateItem(item)">
+          <div class="col-md-1 no-padding">
+            <div class="item-quantity">{{ item.cantidad }}</div>
+          </div>
+          <div class="col-md-6 no-padding"> 
+            <div class="item-description">{{ item.nombre }}</div>
+          </div>
+          <div class="col-md-3 no-padding">
+            <div class="item-cost">{{ item.precio | number:'1.2-2' }}</div>
+          </div>
+          <div class="col-md-2 no-padding d-flex" (click)="deleteOrderItem(item.idProducto, item)">
+            <div class="item-delete d-flex"><img src="assets/trash-icon.svg" alt="Delete"></div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-12 col-md-8 items-total">
+            Total: <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 
+          </div>
+        </div>
+        <div class="row justify-content-center product-add-container">
+          <div class="product-add" (click)="checkoutOrder(cart)" routerLink="/checkout" routerLinkActive="active" >
+            <p>Completar órden</p>
+          </div>
+        </div>
+        <div class="row justify-content-center product-add-container">
+          <div class="new-order" (click)="newOrder()">
+            <p>Empezar una nueva órden</p>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="total == 0">
+        <div class="cart-empty">
+          <img src="assets/empty-bag-icon.svg" alt="Cart empty">
+        </div>
+        <div class="cart-empty-desc">
+          <p>Tu órden está vacia. Agrega productos para empezar.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row fixed-bottom">
+  <div class="col-sm-12 d-md-none d-lg-none d-xl-none d-sm-block">
+      <div class="product-add-sm" (click)="checkoutOrder(cart)" routerLink="/checkout">
+        <div class="product-add-order" (click)="checkoutOrder(cart)" routerLink="/checkout">
+          <img src="assets/order-icon.svg" alt="Order icon">
+          <p>Completar órden</p>
+        </div>
+        <div class="product-add-total" (click)="checkoutOrder(cart)" routerLink="/checkout">
+          <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade modal-backdrop-purple" id="response" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+      <div class="modal-body detail-body">
+        <div class="row">
+          <div class="col-sm-12 text-center" [hidden]="!(modalDetails.error_code == 'transaction_error')">
+            <img src="assets/sin-saldo-icon.svg" alt="Saldo insuficiente">
+          </div>
+          <div class="col-sm-12 text-center error-image" [hidden]="modalDetails.error_code == 'transaction_error'">
+            <img src="assets/error-icon.svg" alt="Error icon">
+          </div>
+        </div>
+        <div class="row product-hero">
+          <div class="col-sm-12">
+            <h5 class="product-title">Lo sentimos</h5>
+            <p class="product-description">{{ modalDetails.message }}</p>
+          </div>
+          <div class="col-sm-12 align-self-center">
+              <p class="product-price"></p>
+          </div>
+        </div>
+        <div class="row justify-content-center product-add-container" [hidden]="!(modalDetails.error_code == 'transaction_error')">
+          <a href="https://m1nt.1001noches.com/#!/" target="_blank" class="recargar">Recargar tarjeta</a>
+        </div>
+        <div class="row justify-content-center product-add-container">
+          <button class="btn-checkout btn-checkout-lg btn-checkout-primary " (click)="close()">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

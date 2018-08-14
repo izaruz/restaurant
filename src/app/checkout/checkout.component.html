@@ -1,0 +1,320 @@
+<div class="container">
+  <div class="row breadcrumb-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Menu</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Pagar</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-md-7 col-lg-8">
+      <div class="row align-items-center subtitle-icon checkout-title-container">
+        <img src="assets/order-icon-complete.svg" alt="Bag icon">
+        <h3 class="title">Orden</h3>
+      </div>
+      <div class="row checkout-container">
+          <div class="col-sm-12 product-container">
+            <div class="row align-items-center subtitle-icon">
+              <img src="assets/location-icon.svg" alt="Location icon">
+              <h3>Lugar de entrega</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 order-description">
+                <p>Selecciona una opcion donde deseas recoger tu órden</p>
+              </div>
+            </div>
+            <div class="row justify-content-around">
+              <div class="col-4 col-md-3 order-location-one" (click)="orderLocation($event)" id="local" [ngClass]="{'location-active-one': locationOne }">
+                En local
+              </div>
+              <div class="col-4 col-md-3 order-location-two" (click)="orderLocation($event)" id="reforma" [ngClass]="{'location-active-two': locationTwo }">
+                Avenida Reforma
+              </div>
+              <div class="col-4 col-md-3 order-location-three" (click)="orderLocation($event)" id="avenida" [ngClass]="{'location-active-three': locationThree }">
+                1a avenida
+              </div>
+            </div>
+
+            <div *ngIf="selectedLocation == 1">
+              <div class="row">
+                <div class="col-sm-12 order-description">
+                  <p>Puedes recoger tu órden en 1001 noches en el local de Jakes</p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="selectedLocation == 2">
+              <div class="row">
+                <div class="col-sm-12 order-description">
+                  <p>Te entregamos tu órden en la ventana de tu vehículo, solo debes estar atento a nuestro empleado esperándote sobre la Avenida Reforma frente a 1001 noches.</p>
+                </div>
+              </div>
+              <div class="row">
+                <input [(ngModel)]="locationMessage" (keyup)="onKey($event)" class="order-input" placeholder="Añade una nota para ayudarnos a identificarte (Ej. Carro Toyota Rojo, Placas 354FSS)">
+              </div>
+            </div>
+
+            <div *ngIf="selectedLocation == 3">
+                <div class="row">
+                  <div class="col-sm-12 order-description">
+                    <p>Te entregamos tu órden en la ventana de tu vehículo, solo debes estar atento a nuestro empleado esperándote sobre la Avenida (A un costado de Geminis).</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <input [(ngModel)]="locationMessage" (keyup)="onKey($event)" class="order-input" placeholder="Añade una nota para ayudarnos a identificarte (Ej. Carro Toyota Rojo, Placas 354FSS)">
+                </div>
+              </div>
+
+          </div>
+
+          <!-- Mint info -->
+          <div class="col-sm-12 product-container">
+            <div class="row align-items-center">
+              <div class="col-7 col-sm-8">
+                <div class="row align-items-center subtitle-icon" *ngIf="!newCustomerState">
+                  <img src="assets/payment-icon.svg" alt="Credit card">
+                  <h3>Datos de pago</h3>
+                </div>
+                <button *ngIf="newCustomerState" type="button" class="btn btn-outline-purple" (click)="payMint()">Pagar con M1NT</button>
+              </div>
+              <div class="col-5 col-sm-4">
+                <!-- <p class="video">¿Qué es m1nt?</p> -->
+              </div>
+            </div>
+            
+            <div class="row mint-card" *ngIf="!newCustomerState">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="mintNumber">Número de tarjeta M1NT *</label>
+                  <input [(ngModel)]="payData.mintCard" class="pay-input" id="mintNumber" required (input)="mintCard(payData.mintCard)">
+                  <small id="mintHelp" class="form-text text-muted">{{ customerName }}</small>
+                  <span class="badge badge-important" *ngIf="errorMint">{{ errorMint }} </span>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="mintNumber">Teléfono registrado con tu tarjeta m1nt *</label>
+                  <input [(ngModel)]="payData.phoneNumber" class="pay-input" id="mintNumber" required [disabled]="validCard" (input)="phoneNumber(payData.phoneNumber)">
+                  <small id="mintHelp" class="form-text text-muted">{{ customerPhone }}</small>
+                  <span class="badge badge-important" *ngIf="errorValidate">{{ errorValidate }} </span>
+                  <!-- <img src="assets/loading.gif" *ngIf="errorValidate" style="height: 20px;" alt="Loading"> -->
+                </div>
+              </div>
+              <div class="col-sm-12">
+                  <span (click)="newCustomer()" class="new-customer">Crear una cuenta</span>
+              </div>
+            </div>
+
+            <div class="row new-customer-info" *ngIf="newCustomerState">
+              <div class="col-sm-12">
+                <div class="row justify-content-center">
+                  <div class="col-sm-8 mint-form-title">
+                    <h3>Crear una cuenta m1nt</h3>
+                    <p class="mint-card-new">¿No tienes tarjeta m1nt? Puedes crear tu cuenta en un minuto y recargar saldo a tu tarjeta M1NT utilizando tu tarjeta de crédito/débito.</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <form class="mint-form-container" [formGroup]="form">
+                    
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncName">Nombres *</label>
+                          <input formControlName="ncName" class="pay-input" id="ncName" name="ncName" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncName'].errors && !form.controls['ncName'].pristine">
+                            <div [hidden]="!form.controls['ncName'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncLastname">Apellidos *</label>
+                          <input formControlName="ncLastname" class="pay-input" id="ncLastname" name="ncLastname" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncLastname'].errors && !form.controls['ncLastname'].pristine">
+                            <div [hidden]="!form.controls['ncLastname'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncEmail">e-mail *</label>
+                          <input formControlName="ncEmail" class="pay-input" id="ncEmail" name="ncEmail" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncEmail'].errors && !form.controls['ncEmail'].pristine">
+                            <div [hidden]="!form.controls['ncEmail'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncEmail'].errors.email">
+                              <span class="badge badge-important">Email invalido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncPhone">Teléfono *</label>
+                          <input formControlName="ncPhone" class="pay-input" id="ncPhone" name="ncPhone" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncPhone'].errors && !form.controls['ncPhone'].pristine">
+                            <div [hidden]="!form.controls['ncPhone'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncPhone'].errors.minlength">
+                              <span class="badge badge-important">Número inválido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h4 class="mint-form-subtitle">Datos de Facturación</h4>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncSocial">Razón Social *</label>
+                          <input formControlName="ncSocial" class="pay-input" id="ncSocial" name="ncSocial" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncSocial'].errors && !form.controls['ncSocial'].pristine">
+                            <div [hidden]="!form.controls['ncSocial'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncNit">NIT *</label>
+                          <input formControlName="ncNit" class="pay-input" id="ncNit" name="ncNit" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncNit'].errors && !form.controls['ncNit'].pristine">
+                            <div [hidden]="!form.controls['ncNit'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h4 class="mint-form-subtitle">Datos de Tarjeta de Crédito/débito</h4>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncCardnumber">Número de tarjeta *</label>
+                          <input formControlName="ncCardnumber" class="pay-input" id="ncCardnumber" name="ncCardnumber" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncCardnumber'].errors && !form.controls['ncCardnumber'].pristine">
+                            <div [hidden]="!form.controls['ncCardnumber'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncCardnumber'].errors.pattern">
+                              <span class="badge badge-important">Tarjeta inválida</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="ncCardName">Nombre de la tarjeta *</label>
+                          <input formControlName="ncCardName" class="pay-input" id="ncCardName" name="ncCardName" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncCardName'].errors && !form.controls['ncCardName'].pristine">
+                            <div [hidden]="!form.controls['ncCardName'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-md-2">
+                        <div class="form-group">
+                          <label for="ncExpMonth">Mes *</label>
+                          <input formControlName="ncExpMonth" class="pay-input" id="ncExpMonth" name="ncExpMonth" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncExpMonth'].errors && !form.controls['ncExpMonth'].pristine">
+                            <div [hidden]="!form.controls['ncExpMonth'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncExpMonth'].errors.pattern">
+                              <span class="badge badge-important">Solo dígitos</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncExpMonth'].errors.minlength">
+                              <span class="badge badge-important">Inválido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncExpMonth'].errors.maxlength">
+                              <span class="badge badge-important">Inválido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-md-2">
+                        <div class="form-group">
+                          <label for="ncExpYear">Año *</label>
+                          <input formControlName="ncExpYear" class="pay-input" id="ncExpYear" name="ncExpYear" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncExpYear'].errors && !form.controls['ncExpYear'].pristine">
+                            <div [hidden]="!form.controls['ncExpYear'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncExpYear'].errors.pattern">
+                              <span class="badge badge-important">Solo dígitos</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncExpYear'].errors.minlength">
+                              <span class="badge badge-important">Inválido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncExpYear'].errors.maxlength">
+                              <span class="badge badge-important">Inválido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-md-2">
+                        <div class="form-group">
+                          <label for="ncCvv">CVV *</label>
+                          <input formControlName="ncCvv" class="pay-input" id="ncCvv" name="ncCvv" required (input)="formStatus()">
+                          <div *ngIf="form.controls['ncCvv'].errors && !form.controls['ncCvv'].pristine">
+                            <div [hidden]="!form.controls['ncCvv'].errors.required">
+                              <span class="badge badge-important">Campo requerido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncCvv'].errors.pattern">
+                              <span class="badge badge-important">Solo dígitos</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncCvv'].errors.minlength">
+                              <span class="badge badge-important">Inválido</span>
+                            </div>
+                            <div [hidden]="!form.controls['ncCvv'].errors.maxlength">
+                              <span class="badge badge-important">Inválido</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
+                  <div class="col-sm-12">
+                    <p class="mint-card-important"><strong>IMPORTANTE:</strong> Tu tarjeta de crédito será utilizada para recargar Q. {{ total }} a la tarjeta M1NT así puedes completar tu orden.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- cartcheckout component -->
+    <div class="col-sm-5 col-lg-4">
+      <app-cartcheckout></app-cartcheckout>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+@import "../../styles-variables";
+@import "../../styles";
+
+.product-title{
+    font-family: $font-google;
+    font-size: 28px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $primary-color;
+}
+.product-description{
+    font-family: $font-google;
+    font-size: 17px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: center;
+    color: $cool-grey;
+}
+.recargar{
+    font-family: $font-google;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1.1px;
+    text-align: center;
+    color: $primary-color;
+    text-decoration: none;
+    padding: .8rem 1rem !important;
+    margin-bottom: 15px;
+}
+.error-image{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
