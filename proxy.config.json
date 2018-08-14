@@ -1,6 +1,6 @@
 {
 	"/rest": {
-		"target": "http://1001noches.com/jakes/rest",
+		"target": "https://my-json-server.typicode.com/izaruz/restaurant/",
 		"secure": false,
 		"logLevel": "debug",
 		"changeOrigin": true,
