@@ -1,9 +1,9 @@
 {
-	"/rest": {
+	"/restaurant": {
 		"target": "https://my-json-server.typicode.com/izaruz/restaurant/",
 		"secure": false,
 		"logLevel": "debug",
 		"changeOrigin": true,
-		"pathRewrite": {"^/rest" : ""}
+		"pathRewrite": {"^/restaurant" : ""}
 	}
 }

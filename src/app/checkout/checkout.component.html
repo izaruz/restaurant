@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a [routerLink]="['/']">Menu</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Pagar</li>
+        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
       </ol>
     </nav>
   </div>
@@ -11,35 +11,35 @@
     <div class="col-md-7 col-lg-8">
       <div class="row align-items-center subtitle-icon checkout-title-container">
         <img src="assets/order-icon-complete.svg" alt="Bag icon">
-        <h3 class="title">Orden</h3>
+        <h3 class="title">Order</h3>
       </div>
       <div class="row checkout-container">
           <div class="col-sm-12 product-container">
             <div class="row align-items-center subtitle-icon">
               <img src="assets/location-icon.svg" alt="Location icon">
-              <h3>Lugar de entrega</h3>
+              <h3>Place of delivery</h3>
             </div>
             <div class="row">
               <div class="col-sm-12 order-description">
-                <p>Selecciona una opcion donde deseas recoger tu órden</p>
+                <p>Select an option where you want to collect your order</p>
               </div>
             </div>
             <div class="row justify-content-around">
               <div class="col-4 col-md-3 order-location-one" (click)="orderLocation($event)" id="local" [ngClass]="{'location-active-one': locationOne }">
-                En local
+                Restaurant
               </div>
               <div class="col-4 col-md-3 order-location-two" (click)="orderLocation($event)" id="reforma" [ngClass]="{'location-active-two': locationTwo }">
-                Avenida Reforma
+                Home
               </div>
               <div class="col-4 col-md-3 order-location-three" (click)="orderLocation($event)" id="avenida" [ngClass]="{'location-active-three': locationThree }">
-                1a avenida
+                Work
               </div>
             </div>
 
             <div *ngIf="selectedLocation == 1">
               <div class="row">
                 <div class="col-sm-12 order-description">
-                  <p>Puedes recoger tu órden en 1001 noches en el local de Jakes</p>
+                  <p>You can pick up your order at the restaurant</p>
                 </div>
               </div>
             </div>
@@ -47,22 +47,22 @@
             <div *ngIf="selectedLocation == 2">
               <div class="row">
                 <div class="col-sm-12 order-description">
-                  <p>Te entregamos tu órden en la ventana de tu vehículo, solo debes estar atento a nuestro empleado esperándote sobre la Avenida Reforma frente a 1001 noches.</p>
+                  <p>We give you your order at the door of your house, you just have to be attentive to our delivery.</p>
                 </div>
               </div>
               <div class="row">
-                <input [(ngModel)]="locationMessage" (keyup)="onKey($event)" class="order-input" placeholder="Añade una nota para ayudarnos a identificarte (Ej. Carro Toyota Rojo, Placas 354FSS)">
+                <input [(ngModel)]="locationMessage" (keyup)="onKey($event)" class="order-input" placeholder="Add a note to help us identify you (Ex. two-floor house)">
               </div>
             </div>
 
             <div *ngIf="selectedLocation == 3">
                 <div class="row">
                   <div class="col-sm-12 order-description">
-                    <p>Te entregamos tu órden en la ventana de tu vehículo, solo debes estar atento a nuestro empleado esperándote sobre la Avenida (A un costado de Geminis).</p>
+                    <p>We give you your order at the door of your office, you just have to be attentive to our delivery</p>
                   </div>
                 </div>
                 <div class="row">
-                  <input [(ngModel)]="locationMessage" (keyup)="onKey($event)" class="order-input" placeholder="Añade una nota para ayudarnos a identificarte (Ej. Carro Toyota Rojo, Placas 354FSS)">
+                  <input [(ngModel)]="locationMessage" (keyup)="onKey($event)" class="order-input" placeholder="Add a note to help us identify you (Ex. Building of red color)">
                 </div>
               </div>
 
@@ -76,14 +76,13 @@
                   <img src="assets/payment-icon.svg" alt="Credit card">
                   <h3>Datos de pago</h3>
                 </div>
-                <button *ngIf="newCustomerState" type="button" class="btn btn-outline-purple" (click)="payMint()">Pagar con M1NT</button>
+                <button *ngIf="newCustomerState" type="button" class="btn btn-outline-purple" (click)="payMint()">Pagar con registro</button>
               </div>
               <div class="col-5 col-sm-4">
-                <!-- <p class="video">¿Qué es m1nt?</p> -->
               </div>
             </div>
             
-            <div class="row mint-card" *ngIf="!newCustomerState">
+            <!-- <div class="row mint-card" *ngIf="!newCustomerState">
               <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                   <label for="mintNumber">Número de tarjeta M1NT *</label>
@@ -98,20 +97,18 @@
                   <input [(ngModel)]="payData.phoneNumber" class="pay-input" id="mintNumber" required [disabled]="validCard" (input)="phoneNumber(payData.phoneNumber)">
                   <small id="mintHelp" class="form-text text-muted">{{ customerPhone }}</small>
                   <span class="badge badge-important" *ngIf="errorValidate">{{ errorValidate }} </span>
-                  <!-- <img src="assets/loading.gif" *ngIf="errorValidate" style="height: 20px;" alt="Loading"> -->
                 </div>
               </div>
               <div class="col-sm-12">
                   <span (click)="newCustomer()" class="new-customer">Crear una cuenta</span>
               </div>
-            </div>
+            </div> -->
 
-            <div class="row new-customer-info" *ngIf="newCustomerState">
+            <div class="row new-customer-info" *ngIf="!newCustomerState">
               <div class="col-sm-12">
                 <div class="row justify-content-center">
                   <div class="col-sm-8 mint-form-title">
-                    <h3>Crear una cuenta m1nt</h3>
-                    <p class="mint-card-new">¿No tienes tarjeta m1nt? Puedes crear tu cuenta en un minuto y recargar saldo a tu tarjeta M1NT utilizando tu tarjeta de crédito/débito.</p>
+                    <h3>Create an account</h3>
                   </div>
                 </div>
                 <div class="row">
@@ -120,7 +117,7 @@
                     <div class="row">
                       <div class="col-sm-12 col-md-6">
                         <div class="form-group">
-                          <label for="ncName">Nombres *</label>
+                          <label for="ncName">Name *</label>
                           <input formControlName="ncName" class="pay-input" id="ncName" name="ncName" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncName'].errors && !form.controls['ncName'].pristine">
                             <div [hidden]="!form.controls['ncName'].errors.required">
@@ -131,7 +128,7 @@
                       </div>
                       <div class="col-sm-12 col-md-6">
                         <div class="form-group">
-                          <label for="ncLastname">Apellidos *</label>
+                          <label for="ncLastname">Last name *</label>
                           <input formControlName="ncLastname" class="pay-input" id="ncLastname" name="ncLastname" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncLastname'].errors && !form.controls['ncLastname'].pristine">
                             <div [hidden]="!form.controls['ncLastname'].errors.required">
@@ -159,7 +156,7 @@
                       </div>
                       <div class="col-sm-12 col-md-6">
                         <div class="form-group">
-                          <label for="ncPhone">Teléfono *</label>
+                          <label for="ncPhone">Phone *</label>
                           <input formControlName="ncPhone" class="pay-input" id="ncPhone" name="ncPhone" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncPhone'].errors && !form.controls['ncPhone'].pristine">
                             <div [hidden]="!form.controls['ncPhone'].errors.required">
@@ -175,14 +172,14 @@
 
                     <div class="row">
                       <div class="col-sm-12">
-                        <h4 class="mint-form-subtitle">Datos de Facturación</h4>
+                        <h4 class="mint-form-subtitle">Billing Data</h4>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-sm-12 col-md-6">
                         <div class="form-group">
-                          <label for="ncSocial">Razón Social *</label>
+                          <label for="ncSocial">Legal name *</label>
                           <input formControlName="ncSocial" class="pay-input" id="ncSocial" name="ncSocial" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncSocial'].errors && !form.controls['ncSocial'].pristine">
                             <div [hidden]="!form.controls['ncSocial'].errors.required">
@@ -206,14 +203,14 @@
 
                     <div class="row">
                       <div class="col-sm-12">
-                        <h4 class="mint-form-subtitle">Datos de Tarjeta de Crédito/débito</h4>
+                        <h4 class="mint-form-subtitle">Credit / Debit Card Data</h4>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-sm-12 col-md-6">
                         <div class="form-group">
-                          <label for="ncCardnumber">Número de tarjeta *</label>
+                          <label for="ncCardnumber">Card number *</label>
                           <input formControlName="ncCardnumber" class="pay-input" id="ncCardnumber" name="ncCardnumber" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncCardnumber'].errors && !form.controls['ncCardnumber'].pristine">
                             <div [hidden]="!form.controls['ncCardnumber'].errors.required">
@@ -230,7 +227,7 @@
                     <div class="row">
                       <div class="col-sm-12 col-md-6">
                         <div class="form-group">
-                          <label for="ncCardName">Nombre de la tarjeta *</label>
+                          <label for="ncCardName">Name of the card *</label>
                           <input formControlName="ncCardName" class="pay-input" id="ncCardName" name="ncCardName" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncCardName'].errors && !form.controls['ncCardName'].pristine">
                             <div [hidden]="!form.controls['ncCardName'].errors.required">
@@ -241,7 +238,7 @@
                       </div>
                       <div class="col-sm-4 col-md-2">
                         <div class="form-group">
-                          <label for="ncExpMonth">Mes *</label>
+                          <label for="ncExpMonth">Month *</label>
                           <input formControlName="ncExpMonth" class="pay-input" id="ncExpMonth" name="ncExpMonth" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncExpMonth'].errors && !form.controls['ncExpMonth'].pristine">
                             <div [hidden]="!form.controls['ncExpMonth'].errors.required">
@@ -261,7 +258,7 @@
                       </div>
                       <div class="col-sm-4 col-md-2">
                         <div class="form-group">
-                          <label for="ncExpYear">Año *</label>
+                          <label for="ncExpYear">Year *</label>
                           <input formControlName="ncExpYear" class="pay-input" id="ncExpYear" name="ncExpYear" required (input)="formStatus()">
                           <div *ngIf="form.controls['ncExpYear'].errors && !form.controls['ncExpYear'].pristine">
                             <div [hidden]="!form.controls['ncExpYear'].errors.required">
@@ -303,7 +300,7 @@
 
                   </form>
                   <div class="col-sm-12">
-                    <p class="mint-card-important"><strong>IMPORTANTE:</strong> Tu tarjeta de crédito será utilizada para recargar Q. {{ total }} a la tarjeta M1NT así puedes completar tu orden.</p>
+                    <p class="mint-card-important"><strong>IMPORTANT:</strong> Your credit card will be used to recharge US$. {{total}} so you can complete your order.</p>
                   </div>
                 </div>
               </div>

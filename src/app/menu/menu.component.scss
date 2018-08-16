@@ -32,6 +32,7 @@
     box-shadow: 0 7px 17px 0 rgba(185, 192, 197, 0.5);
     background-color: $product-color;
     border-radius: 8px !important;
+    padding-right: 30px
 }
 .product-hero{
     background-color: transparent;
@@ -74,15 +75,6 @@
     color: #000000;
     font-family: $font-google;
     margin: 0;
-}
-.product-price::before{
-    content: "";
-    display: block;
-    background: url("../../assets/mint-icon.svg") no-repeat;
-    width: 20px;
-    height: 20px;
-    float: left;
-    margin: -3px 4px 0 0;
 }
 .product-quantity{
     background-color: $mint-color;

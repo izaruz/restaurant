@@ -1,7 +1,7 @@
 <div class="row cart-stick">
   <div class="col-md-12 d-none d-md-block">
     <div class="cart-container">
-      <h3 (click)="storageOrder()">Resumen de orden</h3>
+      <h3 (click)="storageOrder()">Order summary</h3>
       <div *ngIf="total > 0">
         <div class="row item-container flex-nowrap align-items-center" *ngFor="let item of cart; let index = index; trackBy:trackByIndex;"  (click)="updateItem(item)">
           <div class="col-md-1 no-padding">
@@ -19,17 +19,17 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-sm-12 col-md-8 items-total">
-            Total: <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 
+            Total: US$ {{ total | number:'1.2-2'}} 
           </div>
         </div>
         <div class="row justify-content-center product-add-container">
           <div class="product-add" (click)="checkoutOrder(cart)" routerLink="/checkout" routerLinkActive="active" >
-            <p>Completar órden</p>
+            <p>Complete order</p>
           </div>
         </div>
         <div class="row justify-content-center product-add-container">
           <div class="new-order" (click)="newOrder()">
-            <p>Empezar una nueva órden</p>
+            <p>Start a new order</p>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
           <img src="assets/empty-bag-icon.svg" alt="Cart empty">
         </div>
         <div class="cart-empty-desc">
-          <p>Tu órden está vacia. Agrega productos para empezar.</p>
+          <p>Your order is empty. Add products to start.</p>
         </div>
       </div>
 
@@ -52,7 +52,7 @@
       <div class="product-add-sm" (click)="checkoutOrder(cart)" routerLink="/checkout">
         <div class="product-add-order" (click)="checkoutOrder(cart)" routerLink="/checkout">
           <img src="assets/order-icon.svg" alt="Order icon">
-          <p>Completar órden</p>
+          <p>Complete order</p>
         </div>
         <div class="product-add-total" (click)="checkoutOrder(cart)" routerLink="/checkout">
           <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 

@@ -10,7 +10,7 @@ export class DataService {
 
   // Obtiene el menu del comercio
   getMenu() {
-    return this.http.get('rest/pedidos/menu');
+    return this.http.get('restaurant/menu');
   }
 
   // Obtener informacion del cliente existente de acuerdo al numero de m1nt

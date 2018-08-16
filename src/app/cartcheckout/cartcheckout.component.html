@@ -1,7 +1,7 @@
 <div class="row cart-stick">
   <div class="col-md-12">
     <div class="cart-container">
-      <h3>Resumen de orden</h3>
+      <h3>Order summary</h3>
       <div *ngIf="total > 0">
         <div class="row item-container flex-nowrap align-items-center" *ngFor="let item of cart">
           <div class="col-2 col-md-1 no-padding">
@@ -19,14 +19,14 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-sm-12 col-md-8 items-total">
-            SubTotal: <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 
+            SubTotal: US$ {{ total | number:'1.2-2'}} 
           </div>
           <div class="col-sm-12 col-md-8 items-total">
-            Total: <img src="assets/mint-icon.svg" alt="Mint" class="mint-icon">{{ total | number:'1.2-2'}} 
+            Total: US${{ total | number:'1.2-2'}} 
           </div>
         </div>
         <div class="row justify-content-center product-add-container">
-          <button class="btn-checkout btn-checkout-lg btn-checkout-primary " (click)="checkoutOrder()" [disabled]="validCustomer">Confirmar órden</button>
+          <button class="btn-checkout btn-checkout-lg btn-checkout-primary " (click)="checkoutOrder()" [disabled]="validCustomer">Confirm order</button>
         </div>
       </div>
       
@@ -35,7 +35,7 @@
           <img src="assets/empty-bag-icon.svg" alt="Cart empty">
         </div>
         <div class="cart-empty-desc">
-          <p>Tu órden está vacia. Agrega productos para empezar.</p>
+          <p>Your order is empty. Add products to start.</p>
         </div>
       </div>
 
