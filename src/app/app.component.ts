@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { enableProdMode } from '@angular/core';
+import { enableProdMode } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'jakes-app';
+  title = 'restaurant-app';
 }
-// enableProdMode();
+enableProdMode();

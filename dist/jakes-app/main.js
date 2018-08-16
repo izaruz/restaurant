@@ -119,10 +119,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
-// import { enableProdMode } from '@angular/core';
+
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'jakes-app';
+        this.title = 'restaurant-app';
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -134,7 +134,7 @@ var AppComponent = /** @class */ (function () {
     return AppComponent;
 }());
 
-// enableProdMode();
+Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 
 
 /***/ }),
